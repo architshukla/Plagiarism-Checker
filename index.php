@@ -2,7 +2,7 @@
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="content-type" />
-	<title> Plagiarism Checker </title>
+	<title> Plagiarism Checker | Main Page </title>
 	<link href = "assets/css/bootstrap.css" rel="stylesheet" media="screen">
 	<script src = "assets/js/jquery.js"></script>
 	<script src = "assets/js/bootstrap.min.js"></script>
@@ -23,6 +23,17 @@
     		-webkit-appearance:none;
         }
 	</style>
+	<script>
+	function validateUpload()
+	{
+		if(document.getElementById('file').value == "")
+		{
+			alert("Please choose a document.");
+			return false;
+		}
+		return true;
+	}
+	</script>
 </head>
 <body>
 	<div class='hero-unit'>
@@ -44,6 +55,16 @@
     	<div class="modal-footer">
     		<a href="#" data-dismiss="modal" class="btn btn-primary">Close</a>
     	</div>
+    </div>
+
+    <div class='well' style='margin:40px' align='center'>
+		<form action="processFile.php" method= "POST" enctype="multipart/form-data" onsubmit='return validateUpload()'>
+			<label for="file"><h3>Upload the document<h3></label>
+			<input type="file" name="file" id="file" class='btn btn-large btn-inverse'>
+			<div class='form-actions'>
+				<input class='btn btn-info btn-large span3' type="submit" name="submit" value="Upload!">
+			</div>
+		</form>
     </div>
 </body>
 </html>
