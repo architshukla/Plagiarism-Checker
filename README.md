@@ -13,15 +13,19 @@ How it works
 Folder Structure
 ----------------
 
-* /assets 
+* assets/
 
 Holds Twitter Bootstrap CSS and Javascript files and images/glyphicons
 
-* /scripts
+* config/
+
+Stores configuration data (Path to Python on Windows)
+
+* scripts/
 
 Contains python scripts to perform plagiarism checks
 
-* /temp
+* temp/
 
 Contains uploaded files
 

@@ -36,23 +36,61 @@
 		<h4>Similarity: Top 5 documents</h4>
 		<?php
 			// Check file type
-			// shell_exec("python");
-			// Move file to temp/
-			// Open file
-			// Parse it and get FileName, Link, Similarity% values
-			$fileNames = array("FileName1","FileName2","FileName3","FileName4","FileName5");
-			$links = array("[Link]","[Link]","[Link]","[Link]","[Link]");
-			$similarity = array("80.5%","70.2%","50%","35.5%","20.9%");
+
+			$time = time();
+			move_uploaded_file($_FILES['file']['tmp_name'], "temp/input_$time");
+			if(substr(PHP_OS, 0, 3) == 'WIN')
+			{
+				$handle = fopen("config/config.txt","r");
+				while(!feof($handle))
+				{
+					$line = fgets($handle);
+					$parts = explode("=", $line);
+					$configs[$parts[0]]=$parts[1];
+				}
+				fclose($handle);
+				echo $configs['pythonPath']."\python.exe scripts\main.py temp\input_$time temp\output_$time";
+				shell_exec("start cmd /k".$configs['pythonPath']."\python.exe scripts\main.py temp\input_$time temp\output_$time");
+			}
+			else
+			{
+				shell_exec("python scripts/main.py temp/input_$time temp/output_$time")
+			}
+			
+			$handle = fopen("temp/output_$time", "r");
+			$count = 1;
+			while(!feof($handle))
+			{
+				$line = fgets($handle);
+				if(trim($line) == "")
+					continue;
+				$parts = explode(" ",$line);
+				$links[] = "<a href='$parts[0]'>Document $count</a>";
+
+				$start = strpos($parts[0], "//");
+				$end = strpos($parts[0], "/", $start + 3);
+				$temp = substr($parts[0], $start+2, $end - $start - 2);
+				$website[] = $temp;
+
+				$end = strpos($parts[1],".");
+				$similarity[] = substr($parts[1], 0, $end + 3);
+
+				$count++;
+			}
 
 			$colors = array("","danger","success","warning","info");
+			$color = 0;
 
-			for($i=0;$i<5;$i++)
+			for($i=0;$i<count($links);$i++,$color++)
 			{
-				echo "<p><b>$fileNames[$i] - $links[$i] - $similarity[$i]</b>
-				<div class='progress progress-striped active progress-$colors[$i]'>
-				<div class='bar' style='width:$similarity[$i]'></div>
+				if($color > 4)
+					$color = 0;
+				echo "<h4>$links[$i] - Hosted on <u>$website[$i]</u> - $similarity[$i]%</h4>
+				<div class='progress progress-striped active progress-$colors[$color]'>
+				<div class='bar' style='width:".intval($similarity[$i])."%'></div>
 				</div>";
 			}
+			fclose($handle);
 		?>
 </body>
 </html>
