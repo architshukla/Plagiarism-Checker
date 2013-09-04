@@ -54,9 +54,9 @@
 			}
 			else
 			{
-				shell_exec("python scripts/main.py temp/input_$time temp/output_$time")
+				shell_exec("python scripts/main.py temp/input_$time temp/output_$time");
 			}
-			
+
 			$handle = fopen("temp/output_$time", "r");
 			$count = 1;
 			while(!feof($handle))
