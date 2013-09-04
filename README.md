@@ -34,15 +34,15 @@ Python Scripts
 
 Backend is supported using python. There are 3 scripts in total.
 
-1. scripts/main.py
+* scripts/main.py
 
 Main script which gets the results of plagiarism
 
-2. scripts/htmlstrip.py
+* scripts/htmlstrip.py
 
 Used to strip text from HTML tags
 
-3. scripts/cosineSim.py
+* scripts/cosineSim.py
 
 Helper modules to find cosine similarity between strings
 
