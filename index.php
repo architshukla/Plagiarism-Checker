@@ -41,7 +41,7 @@
 		<h1><small>An online utility to check if a document's contents are plagiarsed. </small></h1>
 		<p> </p>
 		<a class='btn btn-danger btn-large' data-toggle='modal' href='#myModal'> Learn More </a>
-		<a class='btn btn-primary btn-large' href='scripts/scripts.tar'> Download Scripts! </a>
+		<a class='btn btn-primary btn-large' href='scripts/scripts.zip'> Download Scripts! </a>
 	</div> 
 
 	<div id='myModal' class="modal hide fade">
