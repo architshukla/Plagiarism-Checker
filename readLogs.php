@@ -18,7 +18,7 @@
 		else
 		{
 			$value = $nums[0];
-			$value = $value/15*100;
+			$value = (int)($value/15*100);
 		}
 	}
 	$div = "<div class='progress progress-success active progress-striped'> <div class='bar' style='width:$value%'></div></div>";
