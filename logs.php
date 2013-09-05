@@ -55,15 +55,24 @@
 		 		if(xmlhttp.responseText.indexOf('stop') != -1)
 		 		{
 		 			var parts = xmlhttp.responseText.split('stop');
-		 			document.getElementById("logDiv").innerHTML=parts[0]+"<br><br><a href='stats.php?file=output_"+<?php echo "\"$timestamp'\""; ?>+" class='btn btn-large btn-success span3'> Statistics </a><br><br>";
+		 			var subparts = parts[0].split("~");
+		 			document.getElementById("logDiv").innerHTML=subparts[0];
+		 			document.getElementById('statusDiv').innerHTML=subparts[1]+"<input type=button class='btn btn-large btn-primary span3' value='Statistics' onclick='redirectStats()'><br><br>";
 		 			clearInterval(getLogsID);
 		 			return;
 		 		}
-		 		document.getElementById("logDiv").innerHTML=xmlhttp.responseText;
+		 		var subparts = xmlhttp.responseText.split("~");
+		 		document.getElementById("logDiv").innerHTML=subparts[0];
+		 		document.getElementById("statusDiv").innerHTML=subparts[1];
 		 	}
 		}
 		xmlhttp.open("GET","readLogs.php?file="+filename,true);
 		xmlhttp.send();
+	}
+
+	function redirectStats()
+	{
+		window.location = "stats.php?file=output_"+<?php echo "\"$timestamp\""; ?>;
 	}
 
 	var getLogsID = setInterval(getLogs,500);
@@ -82,6 +91,9 @@
 		<h1> Processing <small><?php echo $_GET['file']; ?> </small></h1>
 	</div>
 	<div class='well' id='logDiv' style='margin:20px'>
+	</div>
+
+	<div class='well' id='statusDiv' style='margin:20px' align='center'>
 	</div>
 </body>
 </html>

@@ -22,7 +22,7 @@
 				$configs[$parts[0]]=$parts[1];
 			}
 			fclose($handle);
-			shell_exec("".$configs['pythonPath']."\python.exe scripts\main.py temp\input_$time temp\output_$time > temp\log_$time 2>&1");
+			shell_exec("".$configs['pythonPath']."\python.exe scripts\main.py temp\input_$time temp\output_$time > temp\log_$time 2>&1 ");
 		}
 		else
 		{
