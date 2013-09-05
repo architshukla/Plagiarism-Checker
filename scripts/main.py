@@ -8,7 +8,8 @@ from htmlstrip import *
 import codecs
 import sys
 import operator
-import urllib, urllib2, simplejson
+import urllib, urllib2
+import json as simplejson
 
 # Given a text string, remove all non-alphanumeric
 # characters (using Unicode definition of alphanumeric).
