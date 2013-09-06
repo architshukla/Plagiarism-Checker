@@ -2,7 +2,7 @@
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="content-type" />
-	<title> Log Reader | Plagiarism Checker </title>
+	<title> Logs and Statistics | Plagiarism Checker </title>
 	<link href = "assets/css/bootstrap.css" rel="stylesheet" media="screen">
 	<script src = "assets/js/jquery.js"></script>
 	<script src = "assets/js/bootstrap.min.js"></script>
@@ -55,15 +55,12 @@
 		 		if(xmlhttp.responseText.indexOf('stop') != -1)
 		 		{
 		 			var parts = xmlhttp.responseText.split('stop');
-		 			var subparts = parts[0].split("~");
-		 			document.getElementById("logDiv").innerHTML=subparts[0];
-		 			document.getElementById('statusDiv').innerHTML=subparts[1]+"<input type=button class='btn btn-large btn-primary span3' value='Statistics' onclick='redirectStats()'><br><br>";
+		 			document.getElementById("logDiv").innerHTML=parts[1];
+		 			document.getElementById('jumbotronText').innerHTML='Statistics <small><?php echo $_GET['file']; ?> </small>';
 		 			clearInterval(getLogsID);
 		 			return;
 		 		}
-		 		var subparts = xmlhttp.responseText.split("~");
-		 		document.getElementById("logDiv").innerHTML=subparts[0];
-		 		document.getElementById("statusDiv").innerHTML=subparts[1];
+		 		document.getElementById("logDiv").innerHTML=xmlhttp.responseText;
 		 	}
 		}
 		xmlhttp.open("GET","readLogs.php?file="+filename,true);
@@ -88,12 +85,9 @@
 				exit();
 			}
 		?>
-		<h1> Processing <small><?php echo $_GET['file']; ?> </small></h1>
+		<h1 id='jumbotronText'> Processing <small><?php echo $_GET['file']; ?> </small></h1>
 	</div>
 	<div class='well' id='logDiv' style='margin:20px'>
-	</div>
-
-	<div class='well' id='statusDiv' style='margin:20px' align='center'>
 	</div>
 </body>
 </html>

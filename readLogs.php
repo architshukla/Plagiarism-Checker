@@ -6,7 +6,48 @@
 
 	$handle = fopen("temp/".$_GET['file'], "r");
 	$string = fread($handle, filesize("temp/".$_GET['file']));
-	$string = str_replace("...", "...<br>", $string);
+
+	if(strpos($string, "Done!"))
+	{
+		echo "stop";	
+		$parts = explode("_",$_GET['file']);
+		$filename = "output_$parts[1]";
+		$handle = fopen("temp/$filename", "r");
+		$count = 1;
+
+		while(!feof($handle))
+		{
+			$line = fgets($handle);
+			if(trim($line) == "")
+				continue;
+			$parts = explode(" ",$line);
+			$links[] = "<a href='$parts[0]'>Document $count</a>";
+			$start = strpos($parts[0], "//");
+			$end = strpos($parts[0], "/", $start + 3);
+			$temp = substr($parts[0], $start+2, $end - $start - 2);
+			$website[] = $temp;
+			$end = strpos($parts[1],".");
+			$similarity[] = substr($parts[1], 0, $end + 3);
+			$count++;
+		}
+
+		$colors = array("","danger","success","warning","info");
+		$color = 0;
+		echo "<h4>Similarity: Top ".count($links)." documents</h4>";
+
+		for($i=0;$i<count($links);$i++,$color++)
+		{
+			if($color > 4)
+				$color = 0;
+			echo "<h4>$links[$i] - Hosted on <u>$website[$i]</u> - $similarity[$i]%</h4>
+			<div class='progress progress-striped active progress-$colors[$color]'>
+			<div class='bar' style='width:".intval($similarity[$i])."%'></div>
+			</div>";
+		}
+
+		fclose($handle);
+		return;
+	}
 
 	$parts = explode("\r", $string);
 
@@ -17,17 +58,10 @@
 			continue;
 		else
 		{
-			$value = $nums[0];
-			$value = (int)($value/15*100);
+			$numerator = $nums[0];
+			$denominator = intval($nums[1]);
+			$value = (int)($numerator/$denominator*100);
 		}
 	}
-	$div = "<div class='progress progress-success active progress-striped'> <div class='bar' style='width:$value%'></div></div>";
-	$string .= "~".$div;
-
-	if(strpos($string, "Done!"))
-	{
-		$string .="stop";
-	}
-
-	echo $string;
+	echo "<h2 class='text-info'>$value% Completed</h2><br><div class='progress progress-success active progress-striped'> <div class='bar' style='width:$value%'></div></div>";
 ?>
