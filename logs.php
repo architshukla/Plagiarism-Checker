@@ -77,6 +77,17 @@
 	</script>
 </head>
 <body>
+    <div class="navbar navbar-inverse">
+    	<div class="navbar-inner">
+    		<a class="brand" href="javascript:void(0);">Plagiarism Checker</a>
+    		<ul class="nav">
+    			<li class="active"><a href="index.php">Home</a></li>
+    			<li class="active"><a href="scripts/scripts.zip">Download Scripts!</a></li>
+    			<!-- <li><a href="#">Link</a></li> -->
+    		</ul>
+	    </div>
+    </div>
+
 	<div class='hero-unit'>
 		<?php 
 			if(empty($_GET['file']))
