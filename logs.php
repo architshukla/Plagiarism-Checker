@@ -72,7 +72,7 @@
 		window.location = "stats.php?file=output_"+<?php echo "\"$timestamp\""; ?>;
 	}
 
-	var getLogsID = setInterval(getLogs,500);
+	var getLogsID = setInterval(getLogs,50);
 
 	</script>
 </head>
