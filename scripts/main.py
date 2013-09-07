@@ -13,14 +13,26 @@ import json as simplejson
 
 # Given a text string, remove all non-alphanumeric
 # characters (using Unicode definition of alphanumeric).
-def stripNonAlphaNum(text):
+def getQueries(text,n):
 	import re
-	return re.compile(r'\W+', re.UNICODE).split(text)
-
-# Given a list of words and a number n, return a list
-# of n-grams.
-def getNGrams(wordlist, n):
-	return [wordlist[i:i+n] for i in range(len(wordlist)-(n-1))]
+	sentenceEnders = re.compile('[.!?]')
+	sentenceList = sentenceEnders.split(text)
+	sentencesplits = []
+	for sentence in sentenceList:
+		x = re.compile(r'\W+', re.UNICODE).split(sentence)
+		x = [ele for ele in x if ele != '']
+		sentencesplits.append(x)
+	finalq = []
+	for sentence in sentencesplits:
+		l = len(sentence)
+		l=l/n
+		index = 0
+		for i in range(0,l):
+			finalq.append(sentence[index:index+n])
+			index = index + n-1
+		if index !=len(sentence):
+			finalq.append(sentence[len(sentence)-index:len(sentence)])
+	return finalq
 
 # Query Google if a given string, preferably a sentence (min. 8 words?),
 # is plagiarized (copied literally) from an available web source.
@@ -48,11 +60,9 @@ def searchWeb(text,output,c,encode=False):
 			else:
 				output[Match['url']] = 1
 				c[Match['url']] = cosineSim(text,strip_tags(content))
-			#print cosineSim(text,strip_tags(content))		
-			#print "\n"
 	return output,c
 
-# Use the GPlag() function to scrutinize a file for
+# Use the main function to scrutinize a file for
 # plagiarism
 def main():
 	# n-grams N VALUE SET HERE
@@ -66,8 +76,8 @@ def main():
 		print "Usage: python main.py <input-filename>.txt <output-filename>.txt"
 		sys.exit()
 	t=t.read()
-	ngrams = getNGrams(stripNonAlphaNum(t),n)
-	n = [' '.join(d) for d in ngrams]
+	queries = getQueries(t,n)
+	q = [' '.join(d) for d in queries]
 	found = []
 	#using 2 dictionaries: c and output
 	#output is used to store the url as key and number of occurences of that url in different searches as value
@@ -75,9 +85,10 @@ def main():
 	output = {}
 	c = {}
 	i=1
-	for s in n[:15]:
+	count = len(q)
+	for s in q:
 		output,c=searchWeb(s,output,c,encode=True)
-		msg = "\r"+str(i)+"/15 completed..."
+		msg = "\r"+str(i)+"/"+str(count)+"completed..."
 		sys.stdout.write(msg);
 		sys.stdout.flush()
 		i=i+1
