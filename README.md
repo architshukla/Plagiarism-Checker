@@ -1,53 +1,91 @@
-Plagiarism-Checker
-==================
+# Plagiarism-Checker
 
 A utility to check if a document's contents are plagiarised.
 
-How it works
--------------
+## How it works
 
-* It searches online using Google Search API's for some queries. Queries are n-grams extracted from the source txt file. 
-* Resulting URL, matched contents are checked for similarity with given text query.
-* Result of average similarity of all URL's is stored in output text file.
+*   It searches online using Google Search API's for some queries. Queries are n-grams extracted from the source txt file.
+*   Resulting URL, matched contents are checked for similarity with given text query.
+*   Result of average similarity of all URL's is stored in output text file.
 
-Folder Structure
-----------------
+## REQUIRED LIBRARIES
+</div><div>The project uses python-docx module to decode docx files. The python-docx module has its own set of dependent libraries. The required libraries are:
 
-* assets/
+*   PIL
+*   lxml
+*   python-dateutil
+*   python-docx
+
+### GETTING LIBRARIES ON LINUX
+
+* Get easy_install
+> sudo apt-get install python-setup tools
+
+* Install PIP
+> sudo easy_install pip
+
+* Install dependent libraries
+> sudo pip install PIL
+> sudo pip install lxml
+> sudo pip install python-dateutil
+
+* Install python-docx
+> sudo pip install docx
+
+### GETTING LIBRARIES ON WINDOWS
+
+These steps assume you already have python installed and that python is in your windows environment variables.
+
+Download [setup-tools](http://pypi.python.org/pypi/setuptools) according to your python version. (That is python 2.7 in most cases)
+
+Run the .exe file. The installer will automatically find your python installation location from the registry and install easy_install to the Scripts directory where your python installation is located.
+
+Once the installer has run, add easy_install to the windows environment variables path.
+
+* Open a command window
+* Run the following command:
+> easy_install pip
+
+* Then install the required libraries
+> pip install PIL
+> pip install lxml
+> pip install python-dateutil
+> pip install docx
+
+## Folder Structure
+
+*   assets/
 
 Holds Twitter Bootstrap CSS and Javascript files and images/glyphicons
 
-* config/
+*   config/
 
 Stores configuration data (Path to Python on Windows)
 
-* scripts/
+*   scripts/
 
 Contains python scripts to perform plagiarism checks
 
-* temp/
+*   temp/
 
 Contains uploaded files
 
-Python Scripts
----------------
+## Python Scripts
 
 Backend is supported using python. There are 3 scripts in total.
 
-* scripts/main.py
+*   scripts/main.py
 
 Main script which gets the results of plagiarism
 
-* scripts/htmlstrip.py
+*   scripts/htmlstrip.py
 
 Used to strip text from HTML tags
 
-* scripts/cosineSim.py
+*   scripts/cosineSim.py
 
 Helper modules to find cosine similarity between strings
 
-Usage of Python Script (Standalone)
-------------------------------------
+## Usage of Python Script (Standalone)
 
 > python main.py sampleText.txt sampleOut.txt
-
