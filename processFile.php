@@ -4,12 +4,15 @@
 			
 	if(empty($_GET['file']))
 	{
-		if ($_FILES['file']['type'] != 'text/plain')
+		$mimes = array('text/plain');
+
+		if (!in_array($_FILES['file']['type'], $mimes))
 		{
 			echo "<h2> Only text files are supported.</h2>";
 			exit();
 		}
 		$time = time();
+
 		move_uploaded_file($_FILES['file']['tmp_name'], "temp/input_$time");
 
 		if(substr(PHP_OS, 0, 3) == 'WIN')
