@@ -8,8 +8,8 @@ A utility to check if a document's contents are plagiarised.
 *   Resulting URL, matched contents are checked for similarity with given text query.
 *   Result of average similarity of all URL's is stored in output text file.
 
-## REQUIRED LIBRARIES
-</div><div>The project uses python-docx module to decode docx files. The python-docx module has its own set of dependent libraries. The required libraries are:
+## Required Libraries
+The project uses python-docx module to decode docx files. The python-docx module has its own set of dependent libraries. The required libraries are:
 
 *   PIL
 *   lxml
