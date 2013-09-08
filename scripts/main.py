@@ -3,6 +3,7 @@
 #import other modules
 from cosineSim import *
 from htmlstrip import *
+from extractdocx import *
 
 #import required modules
 import codecs
@@ -38,14 +39,16 @@ def getQueries(text,n):
 # is plagiarized (copied literally) from an available web source.
 # The 'encode' flag can be used if the given string is a Unicode (UTF-8)
 # string.
-def searchWeb(text,output,c,encode=False):
-	if encode == True:
+def searchWeb(text,output,c):
+	try:
 		text = text.encode('utf-8')
+	except:
+		text =  text
 	query = urllib.quote_plus(text)
 	#using googleapis for searching web
 	base_url = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q='
 	url = base_url + '%22' + query + '%22'
-	request = urllib2.Request(url,None,{'Referer':'http://www.rvce.edu.in'})
+	request = urllib2.Request(url,None,{'Referer':'Google Chrome'})
 	response = urllib2.urlopen(request)
 	results = simplejson.load(response)
 	if results['responseData']['results'] and results['responseData']['results'] != []:
@@ -66,16 +69,19 @@ def searchWeb(text,output,c,encode=False):
 # plagiarism
 def main():
 	# n-grams N VALUE SET HERE
-	n=9
+	n=10
 	if len(sys.argv) <3:
 		print "Usage: python main.py <input-filename>.txt <output-filename>.txt"
 		sys.exit()
-	t=codecs.open(sys.argv[1],'r','utf-8')
-	if not t:
-		print "Invalid Filename"
-		print "Usage: python main.py <input-filename>.txt <output-filename>.txt"
-		sys.exit()
-	t=t.read()
+	if sys.argv[1].endswith(".docx"):
+	    t = docxExtract(sys.argv[1])
+	else:
+	    t=codecs.open(sys.argv[1],'r','utf-8')
+	    if not t:
+		    print "Invalid Filename"
+		    print "Usage: python main.py <input-filename>.txt <output-filename>.txt"
+		    sys.exit()
+	    t=t.read()
 	queries = getQueries(t,n)
 	q = [' '.join(d) for d in queries]
 	found = []
@@ -86,8 +92,8 @@ def main():
 	c = {}
 	i=1
 	count = len(q)
-	for s in q:
-		output,c=searchWeb(s,output,c,encode=True)
+	for s in q[:100]:
+		output,c=searchWeb(s,output,c)
 		msg = "\r"+str(i)+"/"+str(count)+"completed..."
 		sys.stdout.write(msg);
 		sys.stdout.flush()
