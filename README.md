@@ -19,12 +19,15 @@ The project uses python-docx module to decode docx files. The python-docx module
 ### GETTING LIBRARIES ON LINUX
 
 * Get easy_install
+
 > sudo apt-get install python-setup tools
 
 * Install PIP
+
 > sudo easy_install pip
 
 * Install dependent libraries
+
 > sudo pip install PIL
 
 > sudo pip install lxml
@@ -32,6 +35,7 @@ The project uses python-docx module to decode docx files. The python-docx module
 > sudo pip install python-dateutil
 
 * Install python-docx
+
 > sudo pip install docx
 
 ### GETTING LIBRARIES ON WINDOWS
@@ -46,9 +50,11 @@ Once the installer has run, add easy_install to the windows environment variable
 
 * Open a command window
 * Run the following command:
+
 > easy_install pip
 
 * Then install the required libraries
+
 > pip install PIL
 
 > pip install lxml
