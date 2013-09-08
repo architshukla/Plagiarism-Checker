@@ -38,6 +38,11 @@ The project uses python-docx module to decode docx files. The python-docx module
 
 > sudo pip install docx
 
+* Install pdftotext for pdf support (sketchy at the moment)
+
+> sudo apt-get install poppler-utils
+
+
 ### GETTING LIBRARIES ON WINDOWS
 
 These steps assume you already have python installed and that python is in your windows environment variables.
