@@ -26,7 +26,9 @@ The project uses python-docx module to decode docx files. The python-docx module
 
 * Install dependent libraries
 > sudo pip install PIL
+
 > sudo pip install lxml
+
 > sudo pip install python-dateutil
 
 * Install python-docx
@@ -48,8 +50,11 @@ Once the installer has run, add easy_install to the windows environment variable
 
 * Then install the required libraries
 > pip install PIL
+
 > pip install lxml
+
 > pip install python-dateutil
+
 > pip install docx
 
 ## Folder Structure
