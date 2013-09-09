@@ -33,10 +33,19 @@
         else
         {
             if(strcmp($_FILES['file']['type'],'application/vnd.openxmlformats-officedocument.wordprocessingml.document')==0)
+            {
                 move_uploaded_file($_FILES['file']['tmp_name'], "temp/input_$time.docx");
+                $docx = 1;
+            }
             else
-                move_uploaded_file($_FILES['file']['tmp_name'], "temp/input_$time");
+            {
+            	move_uploaded_file($_FILES['file']['tmp_name'], "temp/input_$time");
+            	$docx = 0;
+            }
         }
-		header("Location: logs.php?file=log_$time&search=1");
+        if($docx == 1)
+        	header("Location: logs.php?file=log_$time&search=1&docx=1");
+        else
+			header("Location: logs.php?file=log_$time&search=1");
 	}
 ?>
