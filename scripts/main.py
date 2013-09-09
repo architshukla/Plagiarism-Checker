@@ -92,6 +92,8 @@ def main():
 	c = {}
 	i=1
 	count = len(q)
+	if count>100:
+	    count=100
 	for s in q[:100]:
 		output,c=searchWeb(s,output,c)
 		msg = "\r"+str(i)+"/"+str(count)+"completed..."
