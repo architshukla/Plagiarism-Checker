@@ -52,7 +52,7 @@
 			}
 		}
 		$string = str_replace("...", "...<br><br>", $string);
-		echo "~$string";
+		echo "~DELIM~$string";
 
 		fclose($handle);
 		return;
@@ -73,5 +73,5 @@
 		}
 	}
 	$string = str_replace("...", "...<br><br>", $string);
-	echo "<h2 class='text-info'>$value% Completed</h2><br><div class='progress progress-success active progress-striped'> <div class='bar' style='width:$value%'></div></div>~$string";
+	echo "<h2 class='text-info'>$value% Completed</h2><br><div class='progress progress-success active progress-striped'> <div class='bar' style='width:$value%'></div></div>~DELIM~$string";
 ?>

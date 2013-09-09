@@ -55,14 +55,14 @@
 		 		if(xmlhttp.responseText.indexOf('stop') != -1)
 		 		{
 		 			var parts = xmlhttp.responseText.split('stop');
-		 			var subparts = parts[1].split('~');
+		 			var subparts = parts[1].split('~DELIM~');
 		 			document.getElementById("logDiv").innerHTML=subparts[0];
 		 			document.getElementById("outputLogDiv").innerHTML=subparts[1];
 		 			document.getElementById('jumbotronText').innerHTML='Statistics <small><?php echo $_GET['file']; ?> </small>';
 		 			clearInterval(getLogsID);
 		 			return;
 		 		}
-		 		var parts = xmlhttp.responseText.split("~");
+		 		var parts = xmlhttp.responseText.split("~DELIM~");
 		 		document.getElementById("logDiv").innerHTML=parts[0];
 		 		document.getElementById("outputLogDiv").innerHTML=parts[1];
 		 	}
