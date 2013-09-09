@@ -98,7 +98,6 @@
 		else
 			echo "xmlhttp.open('GET','executeScripts.php?timestamp='+timestamp+'&docx=1',true);"
 		?>
-		xmlhttp.open('GET','executeScripts.php?timestamp='+timestamp,true);
 		xmlhttp.send();
 	}
 
