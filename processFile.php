@@ -44,8 +44,8 @@
             }
         }
         if($docx == 1)
-        	header("Location: logs.php?file=log_$time&search=1&docx=1");
+        	header("Location: logs.php?filename=".$_FILES['file']['name']."&file=log_$time&search=1&docx=1");
         else
-			header("Location: logs.php?file=log_$time&search=1");
+			header("Location: logs.php?filename=".$_FILES['file']['name']."&file=log_$time&search=1");
 	}
 ?>

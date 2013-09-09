@@ -58,7 +58,7 @@
 		 			var subparts = parts[1].split('~DELIM~');
 		 			document.getElementById("logDiv").innerHTML=subparts[0];
 		 			document.getElementById("outputLogDiv").innerHTML=subparts[1];
-		 			document.getElementById('jumbotronText').innerHTML='Statistics <small><?php echo $_GET['file']; ?> </small>';
+		 			document.getElementById('jumbotronText').innerHTML='Statistics <small><?php echo $_GET['filename']; ?> </small>';
 		 			clearInterval(getLogsID);
 		 			return;
 		 		}
@@ -137,7 +137,7 @@
 				exit();
 			}
 		?>
-		<h1 id='jumbotronText'> Processing <small><?php echo $_GET['file']; ?> </small></h1>
+		<h1 id='jumbotronText'> Processing <small><?php echo $_GET['filename']; ?> </small></h1>
 	</div>
 	<div class='well' id='logDiv' style='margin:20px'>
 	</div>
