@@ -67,12 +67,44 @@
 		xmlhttp.send();
 	}
 
+	function executeScripts()
+	{
+		<?php
+			echo "var timestamp = $timestamp;";
+		?>
+		var xmlhttp;
+		if(window.XMLHttpRequest)
+		{
+			xmlhttp = new XMLHttpRequest();
+		}
+		else
+		{
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+		 		return;
+		 	}
+		}
+		xmlhttp.open("GET","executeScripts.php?timestamp="+timestamp,true);
+		xmlhttp.send();
+	}
+
 	function redirectStats()
 	{
 		window.location = "stats.php?file=output_"+<?php echo "\"$timestamp\""; ?>;
 	}
 
-	var getLogsID = setInterval(getLogs,50);
+	var getLogsID = setInterval(getLogs,500);
+
+	<?php
+		if(!empty($_GET['file']) && $_GET['search'] == 1)
+		{
+			echo "executeScripts();";
+		}
+	?>
 
 	</script>
 </head>
