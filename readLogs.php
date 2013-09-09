@@ -44,6 +44,8 @@
 			<div class='bar' style='width:".intval($similarity[$i])."%'></div>
 			</div>";
 		}
+		$string = str_replace("...", "...<br><br>", $string);
+		echo "~$string";
 
 		fclose($handle);
 		return;
@@ -63,5 +65,6 @@
 			$value = (int)($numerator/$denominator*100);
 		}
 	}
-	echo "<h2 class='text-info'>$value% Completed</h2><br><div class='progress progress-success active progress-striped'> <div class='bar' style='width:$value%'></div></div>";
+	$string = str_replace("...", "...<br>", $string);
+	echo "<h2 class='text-info'>$value% Completed</h2><br><div class='progress progress-success active progress-striped'> <div class='bar' style='width:$value%'></div></div>~$string";
 ?>

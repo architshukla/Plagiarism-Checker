@@ -55,12 +55,16 @@
 		 		if(xmlhttp.responseText.indexOf('stop') != -1)
 		 		{
 		 			var parts = xmlhttp.responseText.split('stop');
-		 			document.getElementById("logDiv").innerHTML=parts[1];
+		 			var subparts = parts[1].split('~');
+		 			document.getElementById("logDiv").innerHTML=subparts[0];
+		 			document.getElementById("outputLogDiv").innerHTML=subparts[1];
 		 			document.getElementById('jumbotronText').innerHTML='Statistics <small><?php echo $_GET['file']; ?> </small>';
 		 			clearInterval(getLogsID);
 		 			return;
 		 		}
-		 		document.getElementById("logDiv").innerHTML=xmlhttp.responseText;
+		 		var parts = xmlhttp.responseText.split("~");
+		 		document.getElementById("logDiv").innerHTML=parts[0];
+		 		document.getElementById("outputLogDiv").innerHTML=parts[1];
 		 	}
 		}
 		xmlhttp.open("GET","readLogs.php?file="+filename,true);
@@ -115,7 +119,7 @@
     		<ul class="nav">
     			<li class="active"><a href="index.php">Home</a></li>
     			<li class="active"><a href="scripts/scripts.zip">Download Scripts!</a></li>
-    			<!-- <li><a href="#">Link</a></li> -->
+    			<li class='active'><a class='btn-success' data-toggle='modal' href='#myModal'> View Log </a></li>
     		</ul>
 	    </div>
     </div>
@@ -132,5 +136,20 @@
 	</div>
 	<div class='well' id='logDiv' style='margin:20px'>
 	</div>
+
+	
+
+	<div id='myModal' class="modal hide fade">
+    	<div class="modal-header">
+    		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    		<h3>Plagiarism Checker - Script Logs</h3>
+    	</div>
+    	<div class="modal-body" id='outputLogDiv'>
+    		<p>No logs found.</p>
+    	</div>
+    	<div class="modal-footer">
+    		<a href="#" data-dismiss="modal" class="btn btn-primary">Close</a>
+    	</div>
+    </div>
 </body>
 </html>
