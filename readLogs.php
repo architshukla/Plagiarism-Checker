@@ -33,16 +33,23 @@
 
 		$colors = array("","danger","success","warning","info");
 		$color = 0;
-		echo "<h4>Similarity: Top ".count($links)." documents</h4>";
-
-		for($i=0;$i<count($links);$i++,$color++)
+		if(!$count)
 		{
-			if($color > 4)
-				$color = 0;
-			echo "<h4>$links[$i] - Hosted on <u>$website[$i]</u> - $similarity[$i]%</h4>
-			<div class='progress progress-striped active progress-$colors[$color]'>
-			<div class='bar' style='width:".intval($similarity[$i])."%'></div>
-			</div>";
+			echo "<h4> No Documents Found.</h4>";
+		}
+		else
+		{
+			echo "<h4>Similarity: Top ".count($links)." documents:</h4>";
+
+			for($i=0;$i<count($links);$i++,$color++)
+			{
+				if($color > 4)
+					$color = 0;
+				echo "<h4>$links[$i] - Hosted on <u>$website[$i]</u> - $similarity[$i]%</h4>
+				<div class='progress progress-striped active progress-$colors[$color]'>
+				<div class='bar' style='width:".intval($similarity[$i])."%'></div>
+				</div>";
+			}
 		}
 		$string = str_replace("...", "...<br><br>", $string);
 		echo "~$string";
@@ -65,6 +72,6 @@
 			$value = (int)($numerator/$denominator*100);
 		}
 	}
-	$string = str_replace("...", "...<br>", $string);
+	$string = str_replace("...", "...<br><br>", $string);
 	echo "<h2 class='text-info'>$value% Completed</h2><br><div class='progress progress-success active progress-striped'> <div class='bar' style='width:$value%'></div></div>~$string";
 ?>
