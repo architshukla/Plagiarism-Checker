@@ -51,19 +51,23 @@ def searchWeb(text,output,c):
 	request = urllib2.Request(url,None,{'Referer':'Google Chrome'})
 	response = urllib2.urlopen(request)
 	results = simplejson.load(response)
-	if results['responseData']['results'] and results['responseData']['results'] != []:
-		for ele in	results['responseData']['results']:		  
-			Match = results['responseData']['results'][0]
-			content = Match['content']
-			if Match['url'] in output:
-				#print text
-				#print strip_tags(content)
-				output[Match['url']] = output[Match['url']] + 1
-				c[Match['url']] = (c[Match['url']]*(output[Match['url']] - 1) + cosineSim(text,strip_tags(content)))/(output[Match['url']])
-			else:
-				output[Match['url']] = 1
-				c[Match['url']] = cosineSim(text,strip_tags(content))
+	try:
+	    if ( len(results) and 'responseData' in results and 'results' in results['responseData'] and results['responseData']['results'] != []):
+		    for ele in	results['responseData']['results']:		  
+			    Match = results['responseData']['results'][0]
+			    content = Match['content']
+			    if Match['url'] in output:
+				    #print text
+				    #print strip_tags(content)
+				    output[Match['url']] = output[Match['url']] + 1
+				    c[Match['url']] = (c[Match['url']]*(output[Match['url']] - 1) + cosineSim(text,strip_tags(content)))/(output[Match['url']])
+			    else:
+				    output[Match['url']] = 1
+				    c[Match['url']] = cosineSim(text,strip_tags(content))
+	except:
+		return output,c
 	return output,c
+    
 
 # Use the main function to scrutinize a file for
 # plagiarism
