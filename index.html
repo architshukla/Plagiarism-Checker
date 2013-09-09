@@ -1,0 +1,192 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Plagiarism-checker</title>
+  <meta name="description" content="A utility to check if a document's contents are plagiarised">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Plagiarism-checker</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">A utility to check if a document's contents are plagiarised</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/architshukla/Plagiarism-Checker/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/architshukla/Plagiarism-Checker/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/architshukla/Plagiarism-Checker" class="code">View Plagiarism-checker on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h1>
+<a name="plagiarism-checker" class="anchor" href="#plagiarism-checker"><span class="octicon octicon-link"></span></a>Plagiarism-Checker</h1>
+
+<p>A utility to check if a document's contents are plagiarised.</p>
+
+<h2>
+<a name="how-it-works" class="anchor" href="#how-it-works"><span class="octicon octicon-link"></span></a>How it works</h2>
+
+<ul>
+<li>  It searches online using Google Search API's for some queries. Queries are n-grams extracted from the source txt file.</li>
+<li>  Resulting URL, matched contents are checked for similarity with given text query.</li>
+<li>  Result of average similarity of all URL's is stored in output text file.</li>
+</ul><h2>
+<a name="required-libraries" class="anchor" href="#required-libraries"><span class="octicon octicon-link"></span></a>Required Libraries</h2>
+
+<p>The project uses python-docx module to decode docx files. The python-docx module has its own set of dependent libraries. The required libraries are:</p>
+
+<ul>
+<li>  PIL</li>
+<li>  lxml</li>
+<li>  python-dateutil</li>
+<li>  python-docx</li>
+</ul><h3>
+<a name="getting-libraries-on-linux" class="anchor" href="#getting-libraries-on-linux"><span class="octicon octicon-link"></span></a>GETTING LIBRARIES ON LINUX</h3>
+
+<ul>
+<li>Get easy_install</li>
+</ul><blockquote>
+<p>sudo apt-get install python-setup tools</p>
+</blockquote>
+
+<ul>
+<li>Install PIP</li>
+</ul><blockquote>
+<p>sudo easy_install pip</p>
+</blockquote>
+
+<ul>
+<li>Install dependent libraries</li>
+</ul><blockquote>
+<p>sudo pip install PIL</p>
+
+<p>sudo pip install lxml</p>
+
+<p>sudo pip install python-dateutil</p>
+</blockquote>
+
+<ul>
+<li>Install python-docx</li>
+</ul><blockquote>
+<p>sudo pip install docx</p>
+</blockquote>
+
+<ul>
+<li>Install pdftotext for pdf support (sketchy at the moment)</li>
+</ul><blockquote>
+<p>sudo apt-get install poppler-utils</p>
+</blockquote>
+
+<h3>
+<a name="getting-libraries-on-windows" class="anchor" href="#getting-libraries-on-windows"><span class="octicon octicon-link"></span></a>GETTING LIBRARIES ON WINDOWS</h3>
+
+<p>These steps assume you already have python installed and that python is in your windows environment variables.</p>
+
+<p>Download <a href="http://pypi.python.org/pypi/setuptools">setup-tools</a> according to your python version. (That is python 2.7 in most cases)</p>
+
+<p>Run the .exe file. The installer will automatically find your python installation location from the registry and install easy_install to the Scripts directory where your python installation is located.</p>
+
+<p>Once the installer has run, add easy_install to the windows environment variables path.</p>
+
+<ul>
+<li>Open a command window</li>
+<li>Run the following command:</li>
+</ul><blockquote>
+<p>easy_install pip</p>
+</blockquote>
+
+<ul>
+<li>Then install the required libraries</li>
+</ul><blockquote>
+<p>pip install PIL</p>
+
+<p>pip install lxml</p>
+
+<p>pip install python-dateutil</p>
+
+<p>pip install docx</p>
+</blockquote>
+
+<h2>
+<a name="folder-structure" class="anchor" href="#folder-structure"><span class="octicon octicon-link"></span></a>Folder Structure</h2>
+
+<ul>
+<li>  assets/</li>
+</ul><p>Holds Twitter Bootstrap CSS and Javascript files and images/glyphicons</p>
+
+<ul>
+<li>  config/</li>
+</ul><p>Stores configuration data (Path to Python on Windows)</p>
+
+<ul>
+<li>  scripts/</li>
+</ul><p>Contains python scripts to perform plagiarism checks</p>
+
+<ul>
+<li>  temp/</li>
+</ul><p>Contains uploaded files</p>
+
+<h2>
+<a name="python-scripts" class="anchor" href="#python-scripts"><span class="octicon octicon-link"></span></a>Python Scripts</h2>
+
+<p>Backend is supported using python. There are 3 scripts in total.</p>
+
+<ul>
+<li>  scripts/main.py</li>
+</ul><p>Main script which gets the results of plagiarism</p>
+
+<ul>
+<li>  scripts/htmlstrip.py</li>
+</ul><p>Used to strip text from HTML tags</p>
+
+<ul>
+<li>  scripts/cosineSim.py</li>
+</ul><p>Helper modules to find cosine similarity between strings</p>
+
+<h2>
+<a name="usage-of-python-script-standalone" class="anchor" href="#usage-of-python-script-standalone"><span class="octicon octicon-link"></span></a>Usage of Python Script (Standalone)</h2>
+
+<blockquote>
+<p>python main.py sampleText.txt sampleOut.txt</p>
+</blockquote>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/architshukla" class="avatar"><img src="https://1.gravatar.com/avatar/ea5835654e6f150930becaa6c2923341?d=https%3A%2F%2Fidenticons.github.com%2F5444e60a60368e7083af5ae14def8cf2.png&amp;s=30" width="48" height="48"/></a> <a href="https://github.com/architshukla">architshukla</a> maintains <a href="https://github.com/architshukla/Plagiarism-Checker">Plagiarism-checker</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/architshukla/Plagiarism-Checker/tarball/master" class="tar">tar</a><a href="https://github.com/architshukla/Plagiarism-Checker/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
