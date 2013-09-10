@@ -3,6 +3,8 @@
 	if(!isset($_FILES['file']))
 		header('Location: index.php');
 			
+	$docx = 0;
+
 	if(empty($_GET['file']))
 	{
 		$mimes = array('text/plain','application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/pdf');
@@ -15,12 +17,12 @@
 		
 		$time = time();
 		
-		if(strcmp($_FILES['file']['type'],'application/pdf')==0)
+		if(strcmp($_FILES['file']['type'],'application/pdf') == 0)
 		{
 		    if(substr(PHP_OS, 0, 3) == 'WIN')
 		    {
-		        echo "<h2> PDF support only on linux, currently. </h2>";
-		        exit();
+		        move_uploaded_file($_FILES['file']['tmp_name'], "temp/input_$time.pdf");
+		        shell_exec("scripts\pdftotext64 temp\input_$time.pdf temp\input_$time");
 		    }
 		    
 		    else
@@ -32,7 +34,7 @@
 		
         else
         {
-            if(strcmp($_FILES['file']['type'],'application/vnd.openxmlformats-officedocument.wordprocessingml.document')==0)
+            if(strcmp($_FILES['file']['type'],'application/vnd.openxmlformats-officedocument.wordprocessingml.document') == 0)
             {
                 move_uploaded_file($_FILES['file']['tmp_name'], "temp/input_$time.docx");
                 $docx = 1;
