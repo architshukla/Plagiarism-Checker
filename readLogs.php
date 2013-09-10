@@ -15,19 +15,28 @@
 		$handle = fopen("temp/$filename", "r");
 		$count = 1;
 
+		$links = array();
+
 		while(!feof($handle))
 		{
 			$line = fgets($handle);
 			if(trim($line) == "")
 				continue;
 			$parts = explode(" ",$line);
+
+			$end = strpos($parts[1],"."); 
+			$tempSimilarity = substr($parts[1], 0, $end + 3);
+			if(intval($tempSimilarity) == 0)
+				continue;
+			$similarity[] = $tempSimilarity;
+
 			$links[] = "<a href='$parts[0]'>Document $count</a>";
+
 			$start = strpos($parts[0], "//");
 			$end = strpos($parts[0], "/", $start + 3);
 			$temp = substr($parts[0], $start+2, $end - $start - 2);
 			$website[] = $temp;
-			$end = strpos($parts[1],".");
-			$similarity[] = substr($parts[1], 0, $end + 3);
+
 			$count++;
 		}
 
