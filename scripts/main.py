@@ -73,14 +73,14 @@ def searchWeb(text,output,c):
 # plagiarism
 def main():
 	# n-grams N VALUE SET HERE
-	n=10
+	n=9
 	if len(sys.argv) <3:
 		print "Usage: python main.py <input-filename>.txt <output-filename>.txt"
 		sys.exit()
 	if sys.argv[1].endswith(".docx"):
 	    t = docxExtract(sys.argv[1])
 	else:
-	    t=codecs.open(sys.argv[1],'r','utf-8')
+	    t=open(sys.argv[1],'r')
 	    if not t:
 		    print "Invalid Filename"
 		    print "Usage: python main.py <input-filename>.txt <output-filename>.txt"
