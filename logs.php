@@ -109,7 +109,7 @@
 	var getLogsID = setInterval(getLogs,500);
 
 	<?php
-		if(!empty($_GET['file']) && $_GET['search'] == 1)
+		if(!empty($_GET['file']) && !empty($_GET['search']) && $_GET['search'] == 1)
 		{
 			echo "executeScripts();";
 		}

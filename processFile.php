@@ -22,7 +22,7 @@
 		    if(substr(PHP_OS, 0, 3) == 'WIN')
 		    {
 		        move_uploaded_file($_FILES['file']['tmp_name'], "temp/input_$time.pdf");
-		        shell_exec("scripts\pdftotext64 temp\input_$time.pdf temp\input_$time");
+		        shell_exec("scripts\pdftotext64 -enc UTF-8 temp\input_$time.pdf temp\input_$time");
 		    }
 		    
 		    else
