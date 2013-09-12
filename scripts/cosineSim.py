@@ -1,3 +1,5 @@
+#module to check cosine similarity of two strings
+
 import re, math
 from collections import Counter
 

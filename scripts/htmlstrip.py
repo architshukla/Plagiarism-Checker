@@ -1,5 +1,5 @@
-#script to strip given text from HTML tags
-#usecase: Content from webpages recovered may have stray HTML tags, like <b> or <i>
+# script to strip given text from HTML tags
+# usecase: Content from webpages recovered may have stray HTML tags, like <b> or <i>
 
 from HTMLParser import HTMLParser
 

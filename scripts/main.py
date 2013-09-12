@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# Master script for the plagiarism-checker
+# Coded by: Shashank S Rao
 
 #import other modules
 from cosineSim import *
@@ -7,6 +9,7 @@ from extractdocx import *
 
 #import required modules
 import codecs
+import traceback
 import sys
 import operator
 import urllib, urllib2
@@ -35,10 +38,9 @@ def getQueries(text,n):
 			finalq.append(sentence[len(sentence)-index:len(sentence)])
 	return finalq
 
-# Query Google if a given string, preferably a sentence (min. 8 words?),
-# is plagiarized (copied literally) from an available web source.
-# The 'encode' flag can be used if the given string is a Unicode (UTF-8)
-# string.
+# Search the web for the plagiarised text
+# Calculate the cosineSimilarity of the given query vs matched content on google
+# This is returned as 2 dictionaries 
 def searchWeb(text,output,c):
 	try:
 		text = text.encode('utf-8')
@@ -114,4 +116,10 @@ def main():
 
 
 if __name__ == "__main__":
-	main()
+	try:
+		main()
+	except:
+		#writing the error to stdout for better error detection
+		error = traceback.format_exc()
+		print "Uh Oh!\n"+"Plagiarism-Checker encountered an error!:\n"+error
+

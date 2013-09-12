@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 """
 This file opens a docx (Office 2007) file and dumps the text.
 
@@ -8,6 +9,9 @@ work.
 Part of Python's docx module - http://github.com/mikemaccana/python-docx
 See LICENSE for licensing information.
 """
+
+# This module was taken from a sample of the Python docx module
+# Refer its documentation above for details
 
 import sys
 
