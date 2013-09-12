@@ -3,9 +3,15 @@
 	{
 		return;
 	}
-
 	$handle = fopen("temp/".$_GET['file'], "r");
 	$string = fread($handle, filesize("temp/".$_GET['file']));
+	// echo $string;
+	$string = str_replace("Uh Oh!
+Plagiarism-Checker encountered an error!:", "<p class='text-info'> <b>Uh Oh!
+Plagiarism-Checker encountered an error!:</b></p><p class='text-error'>", $string);
+	$string = str_replace("\r", "<br>", $string);
+
+	// echo $string;
 
 	if(strpos($string, "Done!"))
 	{
@@ -60,14 +66,14 @@
 				</div>";
 			}
 		}
-		$string = str_replace("...", "...<br><br>", $string);
+		$string = str_replace("...", "...<br>", $string);
 		echo "~DELIM~$string";
 
 		fclose($handle);
 		return;
 	}
 
-	$parts = explode("\r", $string);
+	$parts = explode("<br>", $string);
 
 	foreach ($parts as $part)
 	{
@@ -81,6 +87,6 @@
 			$value = (int)($numerator/$denominator*100);
 		}
 	}
-	$string = str_replace("...", "...<br><br>", $string);
+	$string = str_replace("...", "...<br>", $string);
 	echo "<h2 class='text-info'>$value% Completed</h2><br><div class='progress progress-success active progress-striped'> <div class='bar' style='width:$value%'></div></div>~DELIM~$string";
 ?>

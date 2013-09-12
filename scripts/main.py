@@ -121,5 +121,5 @@ if __name__ == "__main__":
 	except:
 		#writing the error to stdout for better error detection
 		error = traceback.format_exc()
-		print "Uh Oh!\n"+"Plagiarism-Checker encountered an error!:\n"+error
+		print "\nUh Oh!\n"+"Plagiarism-Checker encountered an error!:\n"+error
 
