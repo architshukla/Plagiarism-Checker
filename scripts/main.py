@@ -47,6 +47,8 @@ def searchWeb(text,output,c):
 	except:
 		text =  text
 	query = urllib.quote_plus(text)
+	if len(query)>60:
+	    return output,c
 	#using googleapis for searching web
 	base_url = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q='
 	url = base_url + '%22' + query + '%22'

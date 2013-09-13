@@ -42,6 +42,10 @@ The project uses python-docx module to decode docx files. The python-docx module
 
 > sudo apt-get install poppler-utils
 
+* Get ppt and doc support
+
+> sudo apt-get install catdoc
+
 
 ### GETTING LIBRARIES ON WINDOWS
 
@@ -58,7 +62,7 @@ Once the installer has run, add easy_install to the windows environment variable
 
 > easy_install pip
 
-* Then install the required libraries
+* Then install the required libraries for docx support
 
 > pip install PIL
 
@@ -67,6 +71,8 @@ Once the installer has run, add easy_install to the windows environment variable
 > pip install python-dateutil
 
 > pip install docx
+
+* EXEs for pdf, ppt and doc support are included in the package. Nothing need be installed.
 
 ## Folder Structure
 
