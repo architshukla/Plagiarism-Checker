@@ -36,6 +36,7 @@ sudo pip install PIL
 sudo pip install lxml
 
 sudo pip install python-dateutil
+```
 
 * Install python-docx
 
@@ -121,4 +122,6 @@ Helper modules to find cosine similarity between strings
 
 ## Usage of Python Script (Standalone)
 
-> python main.py sampleText.txt sampleOut.txt
+```bash
+python main.py sampleText.txt sampleOut.txt
+```
