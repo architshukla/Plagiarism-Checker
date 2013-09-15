@@ -20,32 +20,40 @@ The project uses python-docx module to decode docx files. The python-docx module
 
 * Get easy_install
 
-> sudo apt-get install python-setup tools
-
+```bash
+sudo apt-get install python-setup tools
+```
 * Install PIP
 
-> sudo easy_install pip
-
+```bash
+sudo easy_install pip
+```
 * Install dependent libraries
 
-> sudo pip install PIL
+```bash
+sudo pip install PIL
 
-> sudo pip install lxml
+sudo pip install lxml
 
-> sudo pip install python-dateutil
+sudo pip install python-dateutil
 
 * Install python-docx
 
-> sudo pip install docx
+```bash
+sudo pip install docx
+```
 
 * Install pdftotext for pdf support (sketchy at the moment)
 
-> sudo apt-get install poppler-utils
+```bash
+sudo apt-get install poppler-utils
+```
 
 * Get ppt and doc support
 
-> sudo apt-get install catdoc
-
+```bash
+sudo apt-get install catdoc
+```
 
 ### GETTING LIBRARIES ON WINDOWS
 
@@ -60,17 +68,20 @@ Once the installer has run, add easy_install to the windows environment variable
 * Open a command window
 * Run the following command:
 
-> easy_install pip
-
+```bash
+easy_install pip
+```
 * Then install the required libraries for docx support
 
-> pip install PIL
+```bash
+pip install PIL
 
-> pip install lxml
+pip install lxml
 
-> pip install python-dateutil
+pip install python-dateutil
 
-> pip install docx
+pip install docx
+```
 
 * EXEs for pdf, ppt and doc support are included in the package. Nothing need be installed.
 
