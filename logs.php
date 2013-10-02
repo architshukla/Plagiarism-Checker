@@ -124,7 +124,7 @@
     		<ul class="nav">
     			<li class="active"><a href="index.php">Home</a></li>
     			<li class="active"><a href="scripts/scripts.zip">Download Scripts!</a></li>
-    			<li class='active'><a class='btn-success' data-toggle='modal' href='#myModal'> View Log </a></li>
+    			<li class='active'><a class='btn-primary' data-toggle='modal' href='#myModal'> View Log </a></li>
     		</ul>
 	    </div>
     </div>

@@ -40,7 +40,7 @@
 		<h1> Plagiarism Checker </h1>
 		<h1><small>An online utility to check if a document's contents are plagiarsed. </small></h1>
 		<p> </p>
-		<a class='btn btn-danger btn-large' data-toggle='modal' href='#myModal'> Learn More </a>
+		<a class='btn btn-info btn-large' data-toggle='modal' href='#myModal'> Learn More </a>
 		<a class='btn btn-primary btn-large' href='scripts/scripts.zip'> Download Scripts! </a>
 	</div> 
 
@@ -63,7 +63,7 @@
 			<label for="file"><h3>Upload the document<h3></label>
 			<input type="file" name="file" id="file" class='btn btn-large btn-inverse'>
 			<div class='form-actions'>
-				<input class='btn btn-info btn-large span3' type="submit" name="submit" value="Upload!">
+				<input class='btn btn-danger btn-large span3' type="submit" name="submit" value="Upload!">
 			</div>
 		</form>
     </div>
