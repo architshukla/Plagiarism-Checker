@@ -88,5 +88,5 @@ Plagiarism-Checker encountered an error!:</b></p><p class='text-error'>", $strin
 		}
 	}
 	$string = str_replace("...", "...<br>", $string);
-	echo "<h2 class='text-info'>$value% Completed</h2><br><div class='progress progress-success active progress-striped'> <div class='bar' style='width:$value%'></div></div>~DELIM~$string";
+	echo "<h2 class='text-info'>$value% Completed</h2><br><div class='progress progress-danger active progress-striped'> <div class='bar' style='width:$value%'></div></div>~DELIM~$string";
 ?>

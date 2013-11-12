@@ -11,7 +11,7 @@
 
 		if (!in_array($_FILES['file']['type'], $mimes))
 		{
-			echo "<h2> Only text / docx / pdf files are supported.</h2>";
+			echo "<h2> Only text / docx / pdf / ppt files are supported.</h2>";
 			echo "<p>This file has MIME type: ".$_FILES['file']['type'];
 			exit();
 		}

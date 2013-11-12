@@ -38,7 +38,7 @@
 <body>
 	<div class='hero-unit'>
 		<h1> Plagiarism Checker </h1>
-		<h1><small>An online utility to check if a document's contents are plagiarsed. </small></h1>
+		<h1><small>An online utility to check if a document's contents are plagiarsed. <br></small></h1>
 		<p> </p>
 		<a class='btn btn-info btn-large' data-toggle='modal' href='#myModal'> Learn More </a>
 		<a class='btn btn-primary btn-large' href='scripts/scripts.zip'> Download Scripts! </a>
@@ -50,8 +50,13 @@
     		<h3>Plagiarism Checker - User Guide</h3>
     	</div>
     	<div class="modal-body">
-    	<!-- TODO: Add Help -->
-    		<p>Usage</p>
+            <p> What do I do? </p>
+            <ul>
+                <li> Upload a document of supported type</li>
+                <li> Wait for the document to be processed </li>
+                <li> Once processed, the results are displayed!</li>
+            </ul>
+    		<p><h4>The plagiarism checker supports: <b><i>pdf, ppt, doc and docx file formats.<i></b></h4></p>
     	</div>
     	<div class="modal-footer">
     		<a href="#" data-dismiss="modal" class="btn btn-primary">Close</a>
