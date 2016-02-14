@@ -21,7 +21,7 @@ The project uses python-docx module to decode docx files. The python-docx module
 * Get easy_install
 
 ```bash
-sudo apt-get install python-setup tools
+sudo apt-get install python-setuptools
 ```
 * Install PIP
 
